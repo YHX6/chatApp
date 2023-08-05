@@ -17,7 +17,6 @@ export default function Logout(){
     return (
         <Button onClick={logout}>
             <BiPowerOff>
-                QWE
             </BiPowerOff>
         </Button>
     );

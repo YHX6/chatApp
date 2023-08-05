@@ -7,6 +7,7 @@ import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';
 import ChatContainer from '../components/ChatContainer';
 
+
 function Chat() {
     const navigate = useNavigate();
     const [contacts, setContacts] = useState([]);
@@ -19,6 +20,7 @@ function Chat() {
                 navigate("/login");
             }else{
                 setCurrentUser(await JSON.parse(localStorage.getItem("chat-app-user")));
+            
                 // console.log("current User is:");
                 // console.log(await JSON.parse(localStorage.getItem("chat-app-user")));
             }
@@ -58,7 +60,7 @@ function Chat() {
             <div className="container">\
                 <Contacts contacts={contacts} changeChat={changeChat}></Contacts>
                   {currentChat === undefined ? (<Welcome ></Welcome>) : (
-                    <ChatContainer currentChat={currentChat}></ChatContainer>
+                    <ChatContainer currentChat={currentChat} currentUser={currentUser}></ChatContainer>
                   )}
                 
             </div>

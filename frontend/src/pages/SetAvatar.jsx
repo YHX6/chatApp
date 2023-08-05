@@ -32,7 +32,7 @@ export default function SetAvatar(){
             }
         };
         asyncUseEffect();
-    }, [])
+    }, [navigate])
 
 
     const setProfilePicture = async () => {
@@ -47,7 +47,7 @@ export default function SetAvatar(){
 
 
             // send avatar to backend to store. Then get isSet attribute from backend, if isSet successfully, we redirect
-            console.log(data);
+            // console.log(data);
             if(data.isSet){
                 user.isAvatarImageSet = true;
                 user.avatarImage = data.image;
@@ -92,7 +92,7 @@ export default function SetAvatar(){
     {   // if is loading, show loader; else show the page
         isLoading ? 
         <Container>
-            <img src={loader} className='"loader'></img>
+            <img src={loader} className='"loader' alt="loader"></img>
         </Container> 
         : (
             <Container>

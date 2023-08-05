@@ -6,7 +6,8 @@ export default function Welcome(){
     const [userName, setUserName] = useState("");
     useEffect( () => {
         const asyncUseEffect = async () => {
-            setUserName(await JSON.parse(localStorage.getItem("chat-app-user")).username);
+            // setUserName(await JSON.parse(localStorage.getItem("chat-app-user")).username);
+            setUserName("test");
         };
         asyncUseEffect();
     },[])
