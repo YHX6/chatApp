@@ -9,7 +9,7 @@ module.exports.addMessage = async (req, resp, next) => {
             sender:from
         });
 
-        console.log(data);
+        // console.log(data);
 
         if(data) return resp.json({msg:"Message added successfully!"});
         return resp.json({msg:"Error persisting message data!"});

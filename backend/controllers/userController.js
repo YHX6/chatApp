@@ -90,7 +90,7 @@ module.exports.getAllUsers = async (req, resp, next) => {
         const users = await User.find({_id:{ $ne:req.params.id} }).select([
             "email", "username","avatarImage", "_id"
         ]);
-        console.log("request for get users");
+        // console.log("request for get users");
         return resp.json({users});
     }catch(e){
         next(e);

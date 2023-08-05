@@ -29,7 +29,7 @@ function Register() {
         event.preventDefault();
         if(handleValidation()){
 
-            const {password, confirmPassword, username, email} = values;
+            const {password, username, email} = values;
             // use axios to send req/resp
             const {data} = await axios.post(registerRouter, {
                 username,
