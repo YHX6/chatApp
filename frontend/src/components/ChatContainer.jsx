@@ -25,7 +25,7 @@ export default function ChatContainer({currentChat, currentUser, socket}){
     };
 
     asyncUseEffect();
-  },[currentChat])
+  },[currentChat, currentUser])
 
   // send message to server and other uses
   const handleSendMsg = async (msg) => {
@@ -55,7 +55,7 @@ export default function ChatContainer({currentChat, currentUser, socket}){
         setArrivalMessage({fromSelf:false, message:msg})
       });
     }
-  },[]);
+  },[socket]);
 
   // add new arrivalMessage
   useEffect(() => {

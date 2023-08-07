@@ -6,7 +6,9 @@ import {allUsersRouter, host} from "../utils/APIRoutes";
 import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';
 import ChatContainer from '../components/ChatContainer';
+import ChatContainerAI from '../components/ChatContainerAI';
 import {io} from "socket.io-client";
+
 
 
 function Chat() {
@@ -15,6 +17,7 @@ function Chat() {
     const [contacts, setContacts] = useState([]);
     const [currentUser, setCurrentUser] = useState(undefined);
     const [currentChat, setCurrentChat] = useState(undefined);
+    const [showAIChat, setShowAIChat] = useState(false);
     // load current user
     useEffect( () => {
         const asyncUseEffect = async () => {
@@ -47,7 +50,9 @@ function Chat() {
                     // console.log(`${allUsersRouter}/${currentUser._id}`);
                   const data = await axios.get(`${allUsersRouter}/${currentUser._id}`);
                   // console.log(data.data.users);
-                  setContacts(data.data.users);
+                  const users = data.data.users;
+                  // console.log(users);
+                  setContacts(users);
               
                 } else {
                   navigate("/setAvatar");
@@ -60,16 +65,25 @@ function Chat() {
 
     const changeChat = (chat) => {
       setCurrentChat(chat);
+      setShowAIChat(false);
     };
+
+    const changeChatAI = () => {
+      setCurrentChat(undefined);
+      setShowAIChat(true);
+    }
 
     
     return (
         <Container>
             <div className="container">\
-                <Contacts contacts={contacts} changeChat={changeChat}></Contacts>
-                  {currentChat === undefined ? (<Welcome ></Welcome>) : (
-                    <ChatContainer currentChat={currentChat} currentUser={currentUser} socket={socket}></ChatContainer>
-                  )}
+                <Contacts contacts={contacts} changeChat={changeChat} changeChatAI={changeChatAI}></Contacts>
+                {currentChat === undefined ? 
+                (showAIChat ? <ChatContainerAI currentUser={currentUser}></ChatContainerAI> : <Welcome ></Welcome>) : 
+                (
+                  <ChatContainer currentChat={currentChat} currentUser={currentUser} socket={socket}></ChatContainer>
+                )}
+                
                 
             </div>
 

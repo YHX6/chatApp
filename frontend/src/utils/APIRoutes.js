@@ -12,3 +12,10 @@ export const allUsersRouter = `${host}/api/auth/allUsers`;
 export const sendMessageRouter = `${host}/api/msg/addmsg`;
 
 export const getAllMessagesRouter = `${host}/api/msg/getallmsg`;
+
+// FOR AI
+export const addUserMessagesAI = `${host}/api/ai/addusermsg`;
+
+export const addAIMessagesAI = `${host}/api/ai/addaimsg`;
+
+export const getAllMessagesAI = `${host}/api/ai/getallmsg`;

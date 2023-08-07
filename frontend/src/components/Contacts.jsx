@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
+import AIContact from "../components/AIContact";
 
 
-export default function Contacts({contacts, changeChat}){
+export default function Contacts({contacts, changeChat, changeChatAI}){
     const [currentUserName, setCurrentUserName] = useState(undefined);
     const [currentUserImage, setCurrentUserImage] = useState(undefined);
     const [currentSelected, setCurrentSelected] = useState(undefined);
+    const [aiSelected, setAiSelected] = useState(false);
 
     // console.log(contacts);
 
@@ -29,7 +31,14 @@ export default function Contacts({contacts, changeChat}){
     const changeCurrentChat = (index, contact) => {
         setCurrentSelected(index);
         changeChat(contact);
+        setAiSelected(false);
     };
+
+    const setChatAI = () => {
+      setCurrentSelected(undefined);
+      setAiSelected(!aiSelected);
+      changeChatAI();
+    }
 
 
 
@@ -43,6 +52,7 @@ export default function Contacts({contacts, changeChat}){
               <img src={Logo} alt="logo" />
               <h3>snappy</h3>
             </div>
+            <div className={`ai_container ${aiSelected ?"aiselected" : ""}`} onClick={setChatAI}><AIContact></AIContact></div>
             <div className="contacts">
               {contacts.map((contact, index) => {
                 return (
@@ -86,7 +96,7 @@ export default function Contacts({contacts, changeChat}){
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 75% 15%;
+  grid-template-rows: 10% 6rem auto 15%;
   overflow: hidden;
   background-color: #080420;
   .brand {
@@ -102,6 +112,17 @@ const Container = styled.div`
       text-transform: uppercase;
     }
   }
+  .ai_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+  }
+  
+
+  .aiselected>div{
+    background-color: #9a86f3;
+  }
+
   .contacts {
     display: flex;
     flex-direction: column;
