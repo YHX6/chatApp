@@ -4,10 +4,12 @@
 
 A real-time chat application built with Node.js, React.js, Socket.io. 
 
-It allows users to regitser, login and choose avatar.
+It allows users to register, login and choose avatar.
 
-This application also enable users to chat with openAI robot by applying openAI API Key.
+This application also enables users to chat with openAI robot by applying openAI API Key.
 
+### API key
+To run this project, try to fill the corresponding openAI API key first in `frontend/src/utils/OpenAIConfig.js` file
 
 
 ## Backend
