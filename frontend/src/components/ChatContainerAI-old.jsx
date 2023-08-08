@@ -12,7 +12,7 @@ import { chatWithAI } from '../utils/OpenAIConfig';
 export default function ChatContainerAI({currentUser}){
   const scrollRef = useRef();
   const [messages, setMessages] = useState([]);
-  // const [prompt, setPrompt] = useState([]);
+  const [prompt, setPrompt] = useState([]);
 
   // get all history messages
   useEffect( () => {
@@ -20,98 +20,82 @@ export default function ChatContainerAI({currentUser}){
         const resp = await axios.post(getAllMessagesAI, {
             userID:currentUser._id
         });
-  
+        console.log("load messages at first");
         setMessages(resp.data);
     };
     asyncUseEffect();
-  },[currentUser]);
-
-    // send message to server and other uses
-    const handleSendMsg = async (msg) => {
-      // user send mesg
-      await axios.post(addUserMessagesAI, {
-      userID:currentUser._id,
-        message:msg
-      });
-  
-      // update local messaages
-      const msgs = [...messages];
-      msgs.push({fromSelf:true, message:msg});
-      setMessages(msgs);
-  
-      // setMessages(msgs, () => {
-      //   // The setState function takes an optional callback parameter that can be used to make updates after the state is changed.
-      //   this.receiveAIMessage();
-      // });
-  
-    };
-  
-  
-  
-  
-    const receiveAIMessage = async (prompt)=> {
-      // get AI response
-      const msg = await chatWithAI(prompt);
-  
-      // store ai message into database
-      await axios.post(addAIMessagesAI, {
-          userID:currentUser._id,
-          message:msg,
-      });
-          
-      // update local messaages
-      const msgs = [...messages];
-      msgs.push({fromSelf:false, message:msg});
-      setMessages(msgs);
-  
-      // console.log("set new messages after receiving from open ai");
-  
-    };
-
-  useEffect( () => {
-    // console.log("messages changed")
-    // console.log(messages);
-    if(messages.length > 0 && messages[messages.length - 1].fromSelf){
-      const p =[
-        {role: "system", content: "You are a helpful assistant."},
-        {role: "user", content: "Hello world"},
-        {role: 'assistant', content: 'Hello! How may I assist you today?'},
-        ];
-        // update prompt
-      for(let msg of messages){
-          if(msg.fromSelf){
-              p.push({role:"user", content:msg.message});
-          }else{
-              p.push({role:"assistant", content:msg.message});
-          }
-      }
-      // console.log(p);
-      receiveAIMessage(p);
-    }
-  },[messages]);
+  },[currentUser])
 
   // init/update prompt when message change
-  // useEffect(() => {    
-    // const p =[
-    //   {role: "system", content: "You are a helpful assistant."},
-    //   {role: "user", content: "Hello world"},
-    //   {role: 'assistant', content: 'Hello! How may I assist you today?'},
-    //   ];
-    //   // update prompt
-    // for(let msg of messages){
-    //     if(msg.fromSelf){
-    //         p.push({role:"user", content:msg.message});
-    //     }else{
-    //         p.push({role:"assistant", content:msg.message});
-    //     }
-    //     setPrompt(p);
-    // }
+  useEffect(() => {    
+    const p =[
+      {role: "system", content: "You are a helpful assistant."},
+      {role: "user", content: "Hello world"},
+      {role: 'assistant', content: 'Hello! How may I assist you today?'},
+      ];
+      // update prompt
+    for(let msg of messages){
+        if(msg.fromSelf){
+            p.push({role:"user", content:msg.message});
+        }else{
+            p.push({role:"assistant", content:msg.message});
+        }
+        setPrompt(p);
+    }
 
-  // },[messages]);
-
-
+  },[messages]);
 
 
+  // send message to AI if the prompts changes and the last one is from user
+  useEffect(() => {
+    console.log(prompt);
+    console.log(prompt[prompt.length - 1]);
+    if(prompt[prompt.length - 1]["role"] === "user"){
+      receiveAIMessage();
+    }
+    
+  }, [prompt]);
+
+  // send message to server and other uses
+  const handleSendMsg = async (msg) => {
+    // user send mesg
+    await axios.post(addUserMessagesAI, {
+    userID:currentUser._id,
+      message:msg
+    });
+
+    // update local messaages
+    const msgs = [...messages];
+    msgs.push({fromSelf:true, message:msg});
+
+    // setMessages(msgs, () => {
+    //   // The setState function takes an optional callback parameter that can be used to make updates after the state is changed.
+    //   this.receiveAIMessage();
+    // });
+
+  };
+
+
+
+
+  const receiveAIMessage = async ()=> {
+    // get AI response
+    const msg = await chatWithAI(prompt);
+
+    // store ai message into database
+    await axios.post(addAIMessagesAI, {
+        userID:currentUser._id,
+        message:msg,
+    });
+        
+    // update local messaages
+    const msgs = [...messages];
+    msgs.push({fromSelf:false, message:msg});
+    setMessages(msgs);
+
+    console.log("set new messages after receiving from open ai");
+
+  };
 
 
   // scroll to bottom

@@ -90,6 +90,16 @@ module.exports.getAllUsers = async (req, resp, next) => {
         const users = await User.find({_id:{ $ne:req.params.id} }).select([
             "email", "username","avatarImage", "_id"
         ]);
+        // console.log(users);
+        let index = -1;
+        for(let i=0; i<users.length; i++){
+            if(users[i].email === process.env.AI_EMAIL){
+                index = i;
+                break;
+            }
+        }
+        users.splice(index, 1);
+
         // console.log("request for get users");
         return resp.json({users});
     }catch(e){

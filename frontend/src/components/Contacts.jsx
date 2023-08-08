@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo192.png";
 import AIContact from "../components/AIContact";
 
 
@@ -50,7 +50,7 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
           <Container>
             <div className="brand">
               <img src={Logo} alt="logo" />
-              <h3>snappy</h3>
+              <h3>chat_xyh</h3>
             </div>
             <div className={`ai_container ${aiSelected ?"aiselected" : ""}`} onClick={setChatAI}><AIContact></AIContact></div>
             <div className="contacts">

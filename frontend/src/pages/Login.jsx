@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo192.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
@@ -80,7 +80,7 @@ function Login() {
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className='brand'>
                     <img src={Logo} alt="logo"></img>
-                    <h1>snappy</h1>
+                    <h1>chat_XYH</h1>
                 </div>
                 <input type="text" placeholder='Username' name="username" min="3" onChange={(e) => {handleChange(e)}}></input>
                 

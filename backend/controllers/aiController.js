@@ -1,4 +1,5 @@
 const Message = require("../models/messageModel");
+// const chatWithAI = require("../utils/OpenAIConfig");
 // const aiID = new ObjectId(process.env.AI_OBJECTID);
 
 
@@ -23,7 +24,7 @@ module.exports.addUserMessage = async (req, resp, next) => {
 module.exports.addAIMessage = async (req, resp, next) => {
     try{
         const {userID, message} = req.body;
-        console.log(message);
+        // console.log(message);
 
         const data = await Message.create({
             message:{text:message},
