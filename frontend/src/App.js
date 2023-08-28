@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Chat from "./pages/Chat";
 import SetAvatar from "./pages/SetAvatar";
+import "./assets/css/style.css";
 
 
 export default function App(){

@@ -62,7 +62,7 @@ initAI();
 // socket io connection
 const io = socket(server, {
     cors:{
-        origin:"http://localhost:3002",
+        origin:process.env.LISTEN_PORT,
         Credential:true,
     }
 });

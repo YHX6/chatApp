@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { loginRouter } from '../utils/APIRoutes';
+import bg from "../assets/react-bg.jpg";
 
 
 function Login() {
@@ -76,6 +77,7 @@ function Login() {
     }
 
     return <>
+        <img className='background-img' src={bg} alt="human and robot handshaking"></img>
         <FormContainer>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className='brand'>
@@ -106,7 +108,7 @@ const FormContainer = styled.div`
     justify-content:center;
     gap:1rem;
     align-items:center;
-    background-color:#131324;
+    background-color:rgba(40,57,101,0.6);
 
     .brand{
         display:flex;
@@ -126,7 +128,7 @@ const FormContainer = styled.div`
         display:flex;
         flex-direction:column;
         gap:2rem;
-        background-color:#00000076;
+        background-color:#00000086;
         border-radius: 2rem;
         padding:3rem 5rem;
         input{
