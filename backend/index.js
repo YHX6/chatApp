@@ -12,8 +12,9 @@ const { ObjectId } = require('mongodb');
 
 const app = express();
 
+
 // config
-require("dotenv").config();
+require("dotenv").config();  // use this to access .env variables
 app.use(cors());
 app.use(express.json());
 
@@ -61,7 +62,7 @@ initAI();
 // socket io connection
 const io = socket(server, {
     cors:{
-        origin:"http://localhost:3000",
+        origin:"http://localhost:3002",
         Credential:true,
     }
 });
