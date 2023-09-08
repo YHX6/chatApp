@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { loginRouter } from '../utils/APIRoutes';
 import bg from "../assets/react-bg.jpg";
-
+import { getOpenAiKey } from '../utils/AWSConfig';
 
 function Login() {
     const navigate = useNavigate();
@@ -79,6 +79,7 @@ function Login() {
     return <>
         <img className='background-img' src={bg} alt="human and robot handshaking"></img>
         <FormContainer>
+            <button onClick={getOpenAiKey}>Test Open AI</button>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className='brand'>
                     <img src={Logo} alt="logo"></img>
