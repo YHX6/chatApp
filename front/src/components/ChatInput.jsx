@@ -32,7 +32,7 @@ export default function ChatInput({handleSendMsg}) {
 
 
     return (
-        <Container className="chatinput_container">
+        <div className="chatinput_container">
             <div className="button-container">
                 <div className="emoji">
                     <BsEmojiSmileFill onClick={switchEmojiPicker}/>
@@ -51,7 +51,7 @@ export default function ChatInput({handleSendMsg}) {
                     <IoMdSend></IoMdSend>
                 </button>
             </form>
-        </Container>
+        </div>
     );
 };
 
