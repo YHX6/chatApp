@@ -75,7 +75,7 @@ function Chat() {
 
     
     return (
-        <Container>
+        <div className='chat_container'>
             <div className="container">
                 <Contacts contacts={contacts} changeChat={changeChat} changeChatAI={changeChatAI}></Contacts>
                 {currentChat === undefined ? 
@@ -88,25 +88,10 @@ function Chat() {
             </div>
 
             
-        </Container>
+        </div>
         
     );
 }
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .container {
-    height: 100vh;
-    width: 100vw;
-    background-color: #343541;
-    display: grid;
-    grid-template-columns: 300px 1fr;
-  }
-  `;
 
 export default Chat;
