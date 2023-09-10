@@ -3,7 +3,7 @@ import ai_img from "../assets/ai_img.jpg";
 
 export default function AIContact(){
     return (
-        <Container>
+        <div className="aicontact_container">
             <div
                 // key={contact._id}
                     className="contact"
@@ -19,7 +19,7 @@ export default function AIContact(){
                       <h3><b>CHAT AI</b></h3>
                     </div>
                   </div>
-        </Container>
+        </div>
     );
 };
 
