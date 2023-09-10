@@ -1,0 +1,97 @@
+/* register & login*/
+.background-img{
+    position: absolute;
+    z-index: -999;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.login_container, 
+.register_container{
+    height:100vh;
+    width:100wh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:1rem;
+    align-items:center;
+    background-color:rgba(40,57,101,0.6);
+}
+
+
+.login_container .brand,
+.register_container .brand{
+        display:flex;
+        align-items:center;
+        gap:1rem;
+        justify-content:center;
+    }
+
+    .login_container .brand img, 
+    .register_container .brand img{
+        height:5rem;
+    }
+    .login_container .brand h1, 
+    .register_container .brand h1{
+        color:white;
+        text-transform:uppercase;
+    }
+
+    .login_container form, 
+    .register_container form{
+        display:flex;
+        flex-direction:column;
+        gap:2rem;
+        background-color:#00000086;
+        border-radius: 2rem;
+        padding:3rem 5rem;
+    }
+
+    .login_container form input,
+    .register_container form input{
+        background-color:transparent;
+        padding:1rem;
+        border:0.1rem solid #4e0eff;
+        border-radius:0.4rem;
+        color:white;
+        width:100%;
+        font-size:1rem;
+    }
+
+    .login_container form input:focus, 
+    .register_container form input:focus{
+        border:0.1rem solid #997af0;
+        outline: none;
+    }
+
+    .login_container button, 
+    .register_container button{
+        background-color: #997af0;
+        color:white;
+        padding:1rem 2rem;
+        border:none;
+        font-weight:bold;
+        border-radius: 0.4rem;
+        font-size:1rem;
+        text-transform: uppercase;
+        transition: 0.5s ease-in-out;
+    }
+
+    .login_container button:hover, 
+    .register_container button:hover{
+        background-color: #4e0eff;
+    }
+
+    .login_container span, 
+    .register_container span{
+        color:white;
+        text-transform: uppercase;
+    }
+
+    .login_container span a,
+    .register_container span a{
+        color:#4e0eff;
+        text-decoration: none;
+        font-weight: bold;
+    }
