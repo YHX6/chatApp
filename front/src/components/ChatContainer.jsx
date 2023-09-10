@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled from "styled-components";
 import ChatInput from './ChatInput';
 import axios from 'axios';
 import { sendMessageRouter, getAllMessagesRouter } from '../utils/APIRoutes';

@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled from "styled-components";
-import Logout from './Logout';
 import ChatInput from './ChatInput';
 import axios from 'axios';
 import { addAIMessagesAI, addUserMessagesAI, getAllMessagesAI } from '../utils/APIRoutes';

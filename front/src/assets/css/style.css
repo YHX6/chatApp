@@ -413,3 +413,97 @@ display: flex;
 .welcome_container span {
     color: #4e0eff;
 }
+
+/* contacts */
+.contacts_container{
+    display: grid;
+  grid-template-rows: 10% 6rem auto 15%;
+  overflow: hidden;
+  background-color: #202123;
+  padding:0.5rem;
+}
+
+.contacts_container .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .contacts_container .brand  img {
+    height: 2rem;
+  }
+  .contacts_container .brand  h3 {
+    color: white;
+    text-transform: uppercase;
+  }
+
+
+  .contacts_container .ai_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+  }
+  
+
+  .contacts_container .aiselected>div{
+    background-color: #9a86f3;
+  }
+
+  .contacts_container .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    gap: 0.8rem;
+  }
+  .contacts_container .contacts::-webkit-scrollbar {
+    width: 0.2rem;
+  }
+  .contacts_container .contacts .contact {
+    background-color: #ffffff34;
+    min-height: 5rem;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+  }
+
+  .contacts_container .contacts .contact  .avatar img {
+      height: 3rem;
+  }
+  .contacts_container .contacts .contact  .username h3 {
+      color: white;
+  }
+
+
+  .contacts_container .contacts .selected {
+    background-color: #9a86f3;
+  }
+
+
+
+
+  .contacts_container .current-user {
+    background-color: #202123;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: #ffffff55 1px solid;
+  }
+
+  .contacts_container .current-user  .user_info{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+  }
+  .contacts_container .current-user  .avatar img {
+      height: 4rem;
+      max-inline-size: 100%;
+  }
+  .contacts_container .current-user  .username  h2 {
+      color: white;
+  }

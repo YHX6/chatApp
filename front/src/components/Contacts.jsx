@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import styled from "styled-components";
 import Logo from "../assets/logo192.png";
 import AIContact from "../components/AIContact";
 import Logout from "./Logout";
@@ -46,7 +45,7 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
 
       <>
         {currentUserImage && currentUserImage && (
-          <Container className="contacts_container">
+          <div className="contacts_container">
             <div className="brand">
               <img src={Logo} alt="logo" />
               <h3>chat_xyh</h3>
@@ -92,104 +91,8 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
               <Logout />
             </div>
 
-          </Container>
+          </div>
         )}
       </>
     );
 };
-
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 6rem auto 15%;
-  overflow: hidden;
-  background-color: #202123;
-  padding:0.5rem;
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    img {
-      height: 2rem;
-    }
-    h3 {
-      color: white;
-      text-transform: uppercase;
-    }
-  }
-  .ai_container{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.8rem;
-  }
-  
-
-  .aiselected>div{
-    background-color: #9a86f3;
-  }
-
-  .contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    gap: 0.8rem;
-    &::-webkit-scrollbar {
-      width: 0.2rem;
-      &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
-    }
-    .contact {
-      background-color: #ffffff34;
-      min-height: 5rem;
-      cursor: pointer;
-      width: 90%;
-      border-radius: 0.2rem;
-      padding: 0.4rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      transition: 0.5s ease-in-out;
-      .avatar {
-        img {
-          height: 3rem;
-        }
-      }
-      .username {
-        h3 {
-          color: white;
-        }
-      }
-    }
-    .selected {
-      background-color: #9a86f3;
-    }
-  }
-
-  .current-user {
-    background-color: #202123;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: #ffffff55 1px solid;
-    .user_info{
-      display: flex;
-      gap:1rem;
-      align-items: center;
-    }
-    .avatar {
-      img {
-        height: 4rem;
-        max-inline-size: 100%;
-      }
-    }
-    .username {
-      h2 {
-        color: white;
-      }
-    }
-  }
-`;
