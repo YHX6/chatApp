@@ -1,16 +1,15 @@
 
-const { Configuration, OpenAIApi } = require("openai");
+// const { Configuration, OpenAIApi } = require("openai");
+import OpenAI from "openai";
 // const apiKey = process.env.REACT_APP_APIKEY;
-const apiKey = "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";
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: apiKey,
 });
-const chatgpt = new OpenAIApi(configuration);
 
 
 export const chatWithAI = async (prompt) => {
-    const response = await chatgpt.createChatCompletion({
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: prompt,
     });  
