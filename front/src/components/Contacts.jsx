@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../assets/logo192.png";
 import AIContact from "../components/AIContact";
-
+import Logout from "./Logout";
 
 export default function Contacts({contacts, changeChat, changeChatAI}){
     const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -45,9 +45,8 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
     return (
 
       <>
-      <div>Contact</div>
         {currentUserImage && currentUserImage && (
-          <Container>
+          <Container className="contacts_container">
             <div className="brand">
               <img src={Logo} alt="logo" />
               <h3>chat_xyh</h3>
@@ -78,16 +77,21 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
 
             </div>
             <div className="current-user">
-              <div className="avatar">
-                <img
-                  src={`data:image/svg+xml;base64,${currentUserImage}`}
-                  alt="avatar"
-                />
+              <div className="user_info">
+                <div className="avatar">
+                  <img
+                    src={`data:image/svg+xml;base64,${currentUserImage}`}
+                    alt="avatar"
+                  />
+                </div>
+                <div className="username">
+                  <h2>{currentUserName}</h2>
+                </div>
               </div>
-              <div className="username">
-                <h2>{currentUserName}</h2>
-              </div>
+       
+              <Logout />
             </div>
+
           </Container>
         )}
       </>
@@ -98,7 +102,8 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 6rem auto 15%;
   overflow: hidden;
-  background-color: #080420;
+  background-color: #202123;
+  padding:0.5rem;
   .brand {
     display: flex;
     align-items: center;
@@ -165,11 +170,16 @@ const Container = styled.div`
   }
 
   .current-user {
-    background-color: #0d0d30;
+    background-color: #202123;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 2rem;
+    border-top: #ffffff55 1px solid;
+    .user_info{
+      display: flex;
+      gap:1rem;
+      align-items: center;
+    }
     .avatar {
       img {
         height: 4rem;
@@ -179,14 +189,6 @@ const Container = styled.div`
     .username {
       h2 {
         color: white;
-      }
-    }
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
-      gap: 0.5rem;
-      .username {
-        h2 {
-          font-size: 1rem;
-        }
       }
     }
   }

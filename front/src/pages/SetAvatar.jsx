@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from "styled-components";
-import loader from "../assets/loader.gif";
+import loading from "../assets/loading.gif";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
@@ -92,7 +91,7 @@ export default function SetAvatar(){
     {   // if is loading, show loader; else show the page
         isLoading ? 
         <div className='avatar_container'>
-            <img src={loader} className='"loader' alt="loader"></img>
+            <img src={loading} className='"loader' alt="loader"></img>
         </div> 
         : (
             <div className='avatar_container'>

@@ -15,7 +15,7 @@ export default function Logout(){
 
 
     return (
-        <Button onClick={logout}>
+        <Button onClick={logout} className="logout">
             <BiPowerOff>
             </BiPowerOff>
         </Button>

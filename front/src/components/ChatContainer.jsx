@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from "styled-components";
-import Logout from './Logout';
 import ChatInput from './ChatInput';
 import axios from 'axios';
 import { sendMessageRouter, getAllMessagesRouter } from '../utils/APIRoutes';
@@ -82,7 +81,7 @@ export default function ChatContainer({currentChat, currentUser, socket}){
               <h3>{currentChat.username}</h3>
             </div>
           </div>
-          <Logout />
+         
         </div>
         <div className="chat-messages">
           {messages.map((message) => {
@@ -114,7 +113,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     .user-details {
       display: flex;
       align-items: center;
@@ -137,6 +136,7 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
+    border-top: #ffffff55 1px solid;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -155,9 +155,6 @@ const Container = styled.div`
         font-size: 1.1rem;
         border-radius: 1rem;
         color: #d1d1d1;
-        @media screen and (min-width: 720px) and (max-width: 1080px) {
-          max-width: 70%;
-        }
       }
     }
     .sended {
@@ -169,7 +166,7 @@ const Container = styled.div`
     .recieved {
       justify-content: flex-start;
       .content {
-        background-color: #9900ff20;
+        background-color: #444654;
       }
     }
   }

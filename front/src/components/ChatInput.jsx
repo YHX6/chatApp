@@ -32,7 +32,7 @@ export default function ChatInput({handleSendMsg}) {
 
 
     return (
-        <Container>
+        <Container className="chatinput_container">
             <div className="button-container">
                 <div className="emoji">
                     <BsEmojiSmileFill onClick={switchEmojiPicker}/>
@@ -59,8 +59,7 @@ const Container = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 5% 95%;
-  background-color: #080420;
-  /* background-color: red; */
+  background-color: transparent;
   padding: 0 2rem;
   padding-bottom: 0.3rem;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -127,12 +126,14 @@ const Container = styled.div`
     align-items: center;
     gap: 2rem;
     background-color: #ffffff34;
+    box-shadow: 10px 5px 5px rgba(0,0,0,0.55);
     input {
       width: 90%;
       height: 60%;
       background-color: transparent;
       color: white;
       border: none;
+      
       padding-left: 1rem;
       font-size: 1.2rem;
 
@@ -151,12 +152,6 @@ const Container = styled.div`
       align-items: center;
       background-color: #9a86f3;
       border: none;
-      @media screen and (min-width: 720px) and (max-width: 1080px) {
-        padding: 0.3rem 1rem;
-        svg {
-          font-size: 1rem;
-        }
-      }
       svg {
         font-size: 2rem;
         color: white;
