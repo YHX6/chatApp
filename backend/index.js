@@ -9,6 +9,7 @@ const User = require("./models/userModel");
 const bcrypt = require("bcrypt");
 
 const { ObjectId } = require('mongodb');
+const { MONGO_URL, PORT, AI_ID, AI_PASSWORD, AI_EMAIL, LISTEN_PORT } = require("./utils/config");
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use("/api/msg", messageRoutes);
 app.use("/api/ai", aiRouters);
 
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(MONGO_URL, {
     useNewUrlParser : true,
     useUnifiedTopology:true,
 }).then(() => {
@@ -34,20 +35,19 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server started on PORT: ${process.env.PORT}`);
+const server = app.listen(PORT, () => {
+    console.log(`Server started on PORT: ${PORT}`);
 });
 
 // create ai account
 const initAI = async () =>{
-    // const aiId = process.env.AI_ID;
-    const aiId = new ObjectId(process.env.AI_ID);
+    const aiId = new ObjectId(AI_ID);
     const aiCheck = await User.findOne({_id:aiId});
     if(!aiCheck){
-        const hashedPassword =  bcrypt.hashSync(process.env.AI_PASSWORD, 10);    
+        const hashedPassword =  bcrypt.hashSync(AI_PASSWORD, 10);    
         const user = await User.create({
             _id:aiId,
-            email:process.env.AI_EMAIL,
+            email:AI_EMAIL,
             username:"ChatAI",
             password:hashedPassword
         });
@@ -58,12 +58,10 @@ initAI();
 
 
 
-console.log(process.env.LISTEN_PORT);
-
 // socket io connection
 const io = socket(server, {
     cors:{
-        origin:process.env.LISTEN_PORT,
+        origin:LISTEN_PORT,
         Credential:true,
     }
 });

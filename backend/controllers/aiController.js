@@ -1,6 +1,6 @@
 const Message = require("../models/messageModel");
-// const chatWithAI = require("../utils/OpenAIConfig");
-// const aiID = new ObjectId(process.env.AI_OBJECTID);
+const { AI_OBJECTID } = require("../utils/config");
+
 
 
 module.exports.addUserMessage = async (req, resp, next) => {
@@ -8,7 +8,7 @@ module.exports.addUserMessage = async (req, resp, next) => {
         const {userID, message} = req.body;
         const data = await Message.create({
             message:{text:message},
-            users:[userID, process.env.AI_OBJECTID],
+            users:[userID, AI_OBJECTID],
             sender:userID
         });
 
@@ -28,8 +28,8 @@ module.exports.addAIMessage = async (req, resp, next) => {
 
         const data = await Message.create({
             message:{text:message},
-            users:[process.env.AI_OBJECTID, userID],
-            sender:process.env.AI_OBJECTID
+            users:[AI_OBJECTID, userID],
+            sender:AI_OBJECTID
         });
 
         // console.log(data);
@@ -49,7 +49,7 @@ module.exports.getAllMessage = async (req, resp, next) => {
         // find the messages between these two
         const messages = await Message
             .find({
-                users:{$all:[userID, process.env.AI_OBJECTID]},
+                users:{$all:[userID, AI_OBJECTID]},
             })
             .sort({updateAt: 1});
 
