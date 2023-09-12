@@ -58,6 +58,7 @@ initAI();
 
 
 
+console.log(process.env.LISTEN_PORT);
 
 // socket io connection
 const io = socket(server, {
