@@ -10,7 +10,7 @@
 /build
 
 #modules
-/node_modules
+# /node_modules
 
 # misc
 .DS_Store
