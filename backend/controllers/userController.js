@@ -1,6 +1,7 @@
 const { json } = require("express");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const { AI_EMAIL } = require("../utils/config");
 
 
 module.exports.register = async (req, resp, next) => {
@@ -93,7 +94,7 @@ module.exports.getAllUsers = async (req, resp, next) => {
         // console.log(users);
         let index = -1;
         for(let i=0; i<users.length; i++){
-            if(users[i].email === process.env.AI_EMAIL){
+            if(users[i].email === AI_EMAIL){
                 index = i;
                 break;
             }
