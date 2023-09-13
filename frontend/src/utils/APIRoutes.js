@@ -1,5 +1,4 @@
-// export const host = "http://44.216.16.167:3001";
-export const host = "http://localhost:3001";
+export const host = process.env.REACT_APP_HOST;
 
 export const registerRouter = `${host}/api/auth/register`;
 
