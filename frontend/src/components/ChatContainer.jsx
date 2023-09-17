@@ -39,7 +39,7 @@ export default function ChatContainer({currentChat, currentUser, socket}){
       from:currentUser._id,
       message:msg,
     });
-    console.log(123);
+
     // update local messaages
     const msgs = [...messages];
     msgs.push({fromSelf:true, message:msg});

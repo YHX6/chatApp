@@ -24,6 +24,16 @@ PORT=3002  # optional
 
 
 
+Remember to change the listen port for backend 
+
+`backend/utils/config.js`
+
+```js
+const LISTEN_PORT="http://localhost:3002"  // change the ip to your host
+```
+
+
+
 
 
 
