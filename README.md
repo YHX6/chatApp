@@ -68,7 +68,8 @@ $ yarn start
 **1.re-pull if can not git pull directly**
 
 ```shell
-git reset --hard origin/aws-new-version
+git fetch origin
+git reset --hard origin/main
 ```
 
 
