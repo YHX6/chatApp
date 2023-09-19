@@ -9,7 +9,9 @@ import "./assets/css/style.css";
 
 export default function App(){
   return (
-    <BrowserRouter>
+    <>
+    <div>I'm testing</div>
+        <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
@@ -17,6 +19,8 @@ export default function App(){
         <Route path="/" element={<Chat></Chat>}></Route>
       </Routes>
     </BrowserRouter>
+    </>
+
     // <Register></Register>
   )
 };

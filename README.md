@@ -61,7 +61,7 @@ $ yarn start
 
 
 
-## Others
+## Deployment
 
 **Some problems on deployment**
 
@@ -87,16 +87,23 @@ REACT_APP_OPENAI_API = ""  # the key is purchase on openai website
 PORT=3002  # optional
 ```
 
+```shell
+pm2 start --name chatapp_frontend npm -- start
+```
+
+
+
 
 
 **3.backend: npm install version problem**
 
 ```shell
 cd backend
-rm -rf node_modules
-rm package-lock.json
-npm install
-npm start
+sudo rm -rf node_modules
+sudo rm package-lock.json
+sudo npm install
+sudo npm start
+pm2 start index.js --name chatapp_backend
 ```
 
 
