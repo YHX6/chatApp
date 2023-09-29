@@ -59,11 +59,13 @@ initAI();
 
 
 // socket io connection
-const io = socket(server, {
+const io = socket(server, { 
     cors:{
         origin:LISTEN_PORT,
         Credential:true,
-    }
+    },
+    transports: ['websocket'], // This line specifies to use WebSocket transport
+    secure: true
 });
 
 global.onlineUsers = new Map();
