@@ -10,7 +10,6 @@ import "./assets/css/style.css";
 export default function App(){
   return (
     <>
-    <div>I'm testing</div>
         <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register></Register>}></Route>
