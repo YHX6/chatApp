@@ -14,8 +14,10 @@ export default function Contacts({contacts, changeChat, changeChatAI}){
     useEffect(() => {
       const asyncUseEffect = async () => {
         const currentUser = await JSON.parse(localStorage.getItem("chat-app-user"));
-        setCurrentUserImage(currentUser.avatarImage);
-        setCurrentUserName(currentUser.username);
+          if(currentUser){    
+            setCurrentUserImage(currentUser.avatarImage);
+            setCurrentUserName(currentUser.username);
+          }
       };
 
       asyncUseEffect();
